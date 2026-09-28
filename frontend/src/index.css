@@ -1,0 +1,140 @@
+:root {
+  --yale-blue: #00356b;
+  --yale-blue-dark: #00203f;
+  --yale-blue-soft: #eef2f6;
+  --yale-accent: #e0b13d;
+  --yale-accent-dark: #c4952a;
+
+  --ink: #1d1d1f;
+  --ink-soft: #515154;
+  --ink-faint: #86868b;
+  --paper: #ffffff;
+  --surface-alt: #f5f5f7;
+  --surface: #ffffff;
+  --border: #e5e5e7;
+
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --display: var(--sans);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 24px 56px -16px rgba(0, 0, 0, 0.22);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  font: 16px/1.5 var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.6s var(--ease) both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-alt) 25%, #ececee 37%, var(--surface-alt) 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Shared size-selector pattern, used on the product detail page and in Quick View. */
+.size-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.size-pill {
+  min-width: 46px;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.size-pill:hover:not(:disabled) {
+  border-color: var(--yale-blue);
+}
+
+.size-pill.selected {
+  background: var(--yale-blue);
+  border-color: var(--yale-blue);
+  color: #fff;
+}
+
+.size-pill.unavailable {
+  background: #f3f1eb;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.size-status {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  margin: 0;
+}

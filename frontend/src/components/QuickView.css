@@ -1,0 +1,134 @@
+.quick-view-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fade-up 0.2s var(--ease);
+}
+
+.quick-view-panel {
+  position: relative;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  max-width: 760px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: quick-view-pop 0.25s var(--ease);
+}
+
+@keyframes quick-view-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.quick-view-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+
+.quick-view-close:hover {
+  background: var(--border);
+}
+
+.quick-view-loading,
+.quick-view-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.quick-view-loading {
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+
+.quick-view-image {
+  background: var(--surface-alt);
+}
+
+.quick-view-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.quick-view-info {
+  padding: 2.25rem 2rem;
+}
+
+.quick-view-eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+
+.quick-view-info h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.4rem;
+}
+
+.quick-view-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.quick-view-desc {
+  color: var(--ink-soft);
+  line-height: 1.55;
+  font-size: 0.92rem;
+  margin: 0 0 1.5rem;
+}
+
+.quick-view-full-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 620px) {
+  .quick-view-body,
+  .quick-view-loading {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-view-image {
+    aspect-ratio: 1 / 1;
+  }
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Campus Customs — App Check</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+    color: #1d1d1f;
+    background: #faf8f4;
+    line-height: 1.55;
+  }
+  h1 {
+    font-size: 1.9rem;
+    margin-bottom: 0.25rem;
+  }
+  .subtitle {
+    color: #515154;
+    margin-bottom: 2.5rem;
+  }
+  section {
+    background: #fff;
+    border: 1px solid #e5e5e7;
+    border-radius: 14px;
+    padding: 1.75rem 2rem 2rem;
+    margin-bottom: 2.25rem;
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.12);
+  }
+  h2 {
+    font-size: 1.2rem;
+    color: #00203f;
+    margin: 0 0 0.75rem;
+  }
+  h2 .check-number {
+    display: inline-block;
+    background: #00356b;
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-size: 0.85rem;
+    margin-right: 0.6rem;
+  }
+  img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #e5e5e7;
+    display: block;
+    margin: 0.75rem 0 1rem;
+  }
+  p.caption {
+    margin: 0;
+    color: #333;
+  }
+  p.caption strong {
+    color: #00356b;
+  }
+  code {
+    background: #f0efe9;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  footer {
+    color: #86868b;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Campus Customs — Live App Check</h1>
+  <p class="subtitle">
+    Screenshots of the running site (frontend on <code>localhost:5180</code>, backend on
+    <code>localhost:8000</code>) proving three specific behaviors, taken directly from a live
+    session — not mocked up.
+  </p>
+
+  <section>
+    <h2><span class="check-number">1</span>Chat gives honest stock &amp; price from the database</h2>
+    <img src="app_check_images/1-inventory-check.png" alt="Chat conversation asking if the Basic Hoodie Big Yale is in stock in size Large and its price" />
+    <p class="caption">
+      Asked the chat assistant <em>"is the basic hoodie big yale in stock in a large, and how much is it?"</em>
+      It replied <strong>"in stock in size L, with 8 available. It's $68"</strong> — both numbers
+      match the real <code>campus_customs.db</code> rows exactly (inventory quantity 8 for size L,
+      catalogue price $68.00), not an invented or approximate answer.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="check-number">2</span>A category question dynamically updates the Products page with real cards</h2>
+    <img src="app_check_images/2-dynamic-search-cards.png" alt="Products page showing a banner and a grid of real hoodie product cards after asking the chat what hoodies are available" />
+    <p class="caption">
+      Asked the chat <em>"what hoodies do you have?"</em> The site automatically navigated to the
+      Products page and rendered a banner ("Showing 12 matches... for 'what hoodies do you
+      have?'") plus a live grid of the actual matching hoodie products — image, name, price, and
+      short description for each — pulled from the same database, not placeholder cards.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="check-number">3</span>Problem 9 usability feature: mobile-friendly navigation</h2>
+    <img src="app_check_images/3-mobile-nav.png" alt="Mobile viewport showing the hamburger menu open with Home, Products, About Us, Log In, and Create Account links stacked" />
+    <p class="caption">
+      At a phone-width viewport (390px), the nav bar collapses into a hamburger icon; tapping it
+      expands a clean, stacked link list (Home, Products, About Us, Log In, Create Account)
+      instead of the nav items wrapping and overlapping the way they did before this usability
+      improvement was added.
+    </p>
+  </section>
+
+  <footer>
+    Campus Customs — HW4 app check, Problem 11.
+  </footer>
+
+</body>
+</html>
