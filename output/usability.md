@@ -21,6 +21,12 @@ control instead of a conversation — this gives them one, with zero latency sin
 filtering data already in memory. For the business, that's a shopper who finds what they
 want faster and doesn't bounce off a wall of products.
 
+**Update (post-Problem 9):** this text box was later expanded into a full faceted filter
+sidebar — category checkboxes, a real price range slider, and color chips, plus a "Sort by"
+dropdown — in response to a follow-up request for standard e-commerce filters. The text box
+above is still there and still works the same way; see `output/design.md`'s "Round 3:
+Standard Filters" section for the fuller, current picture of the Products page.
+
 ### 2. Mobile-friendly navigation (hamburger menu) + a mobile heading fix
 
 **What was added:** the nav bar (`frontend/src/components/NavBar.tsx` / `NavBar.css`) now

@@ -66,7 +66,10 @@ This table already contains a sample conversation (user asking about hoodies, av
 - `Login` / `CreateAccount` — simple forms; submit handlers are stubs (no real auth yet — that's a later problem).
 - `ChatWidget` — floating bottom-right panel, toggled open/closed, posts to `POST /api/chat` and falls back to a "(stub)" message since that endpoint doesn't exist yet. This is the hook Problem 5's agent will plug into.
 
-**Backend** — `backend/main.py` (FastAPI), run on port 8010:
+**Backend** — `backend/main.py` (FastAPI), run on port 8010 at this point in the build
+(a free port at the time; standardized to the required **port 8000** starting in Problem 5
+and used everywhere from then on — see the Problem 12 "Specs" section for the current,
+correct run command):
 - `GET /api/products` — all catalogue rows, each joined with its per-size inventory and a computed `total_stock`.
 - `GET /api/products/{product_id}` — single product, same shape.
 - `GET /media/products/...` — static file serving straight from `data/products/` so the frontend can render real product photos.
