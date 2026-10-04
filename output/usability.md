@@ -90,3 +90,35 @@ must be invalidated there).
 once this moves to a networked database or a busier catalogue, and it means every tool call
 the agent makes (search, stock check, similar-products) responds faster, which shows up
 directly as a snappier chat experience for the shopper.
+
+## Two more improvements made in a later usability pass
+
+### 3. Sorting
+
+**What was added:** a "Sort by" dropdown on the Products page (Recommended / Price: Low to
+High / Price: High to Low / Name: A–Z / Name: Z–A) plus a live product count, composing with
+the filters above and with chat-driven search results.
+
+**Why it helps:** the natural companion to filtering — a shopper who's narrowed down to
+"hoodies under $70" usually wants to sort what's left by price next, not re-scan the grid
+by eye.
+
+### 4. Accessibility: a real bug, not a polish item
+
+**What was added:** every product card had been a plain `<div onClick>` with no way to reach
+it by keyboard and nothing for a screen reader to announce — meaning keyboard and
+screen-reader users could not shop the product grid **at all**, only mouse users could.
+Rebuilt `ProductGrid` so the image and title are each a real `<Link>` (reachable with Tab,
+activatable with Enter), with the "Quick view" button as a sibling rather than invalidly
+nested inside a link. Also added: proper dialog semantics and focus management to the Quick
+View modal (focus moves to the close button on open, Tab is trapped inside it, and focus
+returns to the exact button that opened it when it closes — verified directly via
+`document.activeElement`, not assumed), labels on the previously-unlabeled price-slider
+handles, `aria-pressed` on the size-pill/color-chip toggle buttons, and a live region on the
+chat transcript so new messages are announced to screen readers.
+
+**Why it helps:** this isn't a nice-to-have — it's the difference between a shopper using
+assistive technology being able to buy something on this site at all versus not. It's also
+the kind of defect that's invisible if you only ever test with a mouse, which is exactly how
+it was found: by deliberately testing with a keyboard instead of assuming the existing UI
+was fine.
